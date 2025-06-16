@@ -32,10 +32,19 @@
                                 <label for="dni" class="form-label">DNI</label>
                                 <input type="text" name="dni" class="form-control" required>
                             </div>
+                            <div class="mb-3">
+                                <label for="materia_id" class="form-label">Materia</label>
+                                <select name="materia_id" class="form-select" required>
+                                    {% for materia in materias %}
+                                        <option value="{{ materia.id }}">{{ materia.nombre }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
                         </form>
+
 
 
                         <div class="card mt-4 shadow rounded">
@@ -48,6 +57,7 @@
                                             <th>Nombre</th>
                                             <th>Apellido</th>
                                             <th>DNI</th>
+                                            <th>Materia</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -59,6 +69,7 @@
                                                 <td>{{ persona.nombre }}</td>
                                                 <td>{{ persona.apellido }}</td>
                                                 <td>{{ persona.dni }}</td>
+                                                <td>{{ persona.materia.nombre }}</td>
                                                 <td>
                                                     <a href="{{ url_for('main.eliminar', id=persona.id) }}" class="btn btn-sm btn-danger">Eliminar</a>
                                                 </td>
